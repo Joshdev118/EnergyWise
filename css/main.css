@@ -1,0 +1,265 @@
+/* CSS Reset */
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+/* Make sizing predictable */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #2fb858;
+    --secondary-color: #52bd72;
+    --dark-color: #20803d;
+    --greyish-color: #9ed4ae;
+    --light-color: #c4ffc8;
+    --background-color: #e6fff3;
+    --font-color: #333;
+}
+
+/* Navbar Styles */
+
+.navbar {
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #fff;
+    opacity: 0.8;
+}
+
+.navbar .title {
+    padding: 10px 0px;
+}
+
+.navbar .title a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.navbar .title .title-icon {
+    width: 30px;
+    height: 30px;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.navbar .title h1 {
+    font-size: 28px;
+    color: #333;
+    margin: 0;
+    padding: 10px 0;
+
+}
+
+.navbar .container {
+    background-color: rgb(246, 255, 250);
+    opacity: 0.9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.navbar .main-menu{
+    width: 70%;
+}
+
+.navbar .main-menu ul {
+    display: flex;
+}
+
+.navbar ul li a{
+    display: block;
+    padding: 10px 10px;
+    margin: 0 10px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.navbar ul li a:hover {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+    color: black;
+}
+
+.navbar ul li a:hover .animated-line {
+    transition: width 0.5s;
+    animation: growLine 0.5s ease-in-out forwards;
+}
+
+.animated-line {
+    height: 2px;
+    background-color: #111111;
+    width: 0%;
+}
+
+
+/* Reusable footer / aside styles (desktop-focused) */
+.site-footer,
+.aside {
+	background: linear-gradient(180deg, #f7faf9 0%, #eef6f4 100%);
+	border-radius: 12px;
+	padding: 22px;
+	box-shadow: 0 12px 30px rgba(11, 27, 30, 0.06);
+    
+}
+
+.aside .container{
+    display: flex;
+    justify-content: space-between;
+    color: #12303a;
+    gap: 18px;
+}
+
+.aside .notice {
+    font-size: 0.9rem;
+    color: #516364;
+    margin-top: 12px;
+    text-align: center;
+}
+
+.aside .aside-block,
+.site-footer .aside-block {
+	background: transparent;
+	padding: 0;
+	margin: 0;
+    width: 25%;
+}
+
+.aside .title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.aside .title-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.aside h4,
+.site-footer h4 {
+	margin: 0 0 8px 0;
+	font-size: 1rem;
+	font-weight: 600;
+	color: #0f3b35;
+}
+
+.aside ul,
+.site-footer ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.aside a,
+.site-footer a {
+	color: #0b6b53;
+	text-decoration: none;
+}
+
+.aside a:hover,
+.site-footer a:hover {
+	text-decoration: underline;
+}
+
+/* Subscribe form inside aside/footer */
+.subscribe-form {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.subscribe-form input[type="email"] {
+	flex: 1;
+	padding: 10px 12px;
+	border: 1px solid #d8e9e4;
+	border-radius: 8px;
+	background: #fff;
+	color: #12303a;
+}
+
+.subscribe-form button {
+	padding: 10px 14px;
+	background: #0b6b53;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+.subscribe-form button:hover {
+	background: #095a47;
+}
+
+.aside .aside-block + .aside-block {
+	border-top: 1px solid rgba(11,27,30,0.04);
+	padding-top: 12px;
+}
+
+.aside .small,
+.site-footer .small {
+	font-size: 0.9rem;
+	color: #516364;
+}
+
+
+
+@keyframes growLine {
+  to {
+    width: 100%; /* Animate to full width */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+    .container { padding: 0 12px; }
+    .navbar .title h1 { font-size: 20px; }
+    .navbar .title .title-icon { width: 26px; height: 26px; }
+    .navbar .main-menu { width: auto; }
+    .navbar .main-menu ul { flex-direction: column; gap: 6px; }
+    .navbar ul li a { padding: 8px 6px; }
+    .aside .container { flex-direction: column; gap: 12px; }
+    .aside .aside-block, .site-footer .aside-block { width: 100%; }
+    .subscribe-form { flex-direction: column; align-items: stretch; }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 15px; }
+    .navbar .title h1 { font-size: 18px; }
+    .navbar .main-menu ul { gap: 4px; }
+    .container { padding: 0 10px; }
+    .subscribe-form input[type="email"] { padding: 8px; }
+    .subscribe-form button { padding: 8px; }
+}

@@ -1,0 +1,218 @@
+/* Hero Importance Section */
+
+.importance-hero .container::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 475px;
+    margin: 0px auto;
+    padding: 0; 
+    background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8));
+    z-index: 0; /* ensure the gradient sits behind content */
+}
+
+.importance-hero .container {
+    background: url(/images/deforestation.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+    margin: 0px auto;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    align-items: center;
+}
+
+/* make the container a positioned element so the pseudo-element stacks relative to it */
+.importance-hero { position: relative; }
+.importance-hero .container { position: relative; }
+
+.importance-hero .text{
+    color: white;
+    text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    text-align: center;
+    width: 50%;
+    margin: 100px auto;
+    font-size: 70px;
+    position: relative; /* enable z-index */
+    z-index: 2; /* sit above the gradient pseudo-element */
+    animation: slideInfade 1s ease-out forwards;
+}
+
+/* Section 1 Styles */
+.section-1 {
+    padding: 80px 20px;
+    text-align: center;
+    background: linear-gradient(to bottom, transparent, #3ba13e59);
+}
+
+.section-1 .cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.section-1 .cards .card{
+    background-color: #ffffff4b;
+    border: 1px solid #e6e6e6;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px;
+    flex: 1;
+    width: 300px;
+    height: 300px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-position: center;
+    background-size: cover;
+}
+
+.section-1 .cards .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* White overlay between card background and content to improve readability */
+.section-1 .cards .card {
+    position: relative; /* establish containing block for pseudo-element */
+    overflow: hidden;
+}
+.section-1 .cards .card::before {
+    content: "";
+    position: absolute;
+    inset: 0; /* top:0; right:0; bottom:0; left:0; */
+    background: rgba(255,255,255,0.5); /* semi-opaque white overlay */
+    z-index: 0;
+    pointer-events: none;
+}
+/* Ensure card content sits above the overlay */
+.section-1 .cards .card > * {
+    position: relative;
+    z-index: 1;
+}
+
+.section-1 .cards .iconbox {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--light-color);
+    margin: 0 auto 20px auto;
+}
+
+.section-1 .cards .content-icon {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-color);
+}
+
+.section-1 .cards .card h1{
+    color: var(--primary-color)
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive rules for importance page */
+@media (max-width: 900px) {
+    .importance-hero .container { height: 360px; }
+    .importance-hero .text { margin: 60px auto; width: 80%; font-size: 42px; }
+    .section-1 { padding: 40px 12px; }
+    .section-1 .cards { gap: 12px; }
+    .section-1 .cards .card { width: 100%; height: auto; margin: 12px 0; }
+}
+
+@media (max-width: 480px) {
+    .importance-hero .container { height: 260px; }
+    .importance-hero .text { font-size: 28px; margin: 28px auto; width: 92%; }
+    .section-1 .cards .card { padding: 14px; }
+    .faq-section { padding: 30px 12px; }
+}
+
+/* FAQ / Dropdown styles */
+.faq-section {
+    padding: 60px 20px;
+    background: linear-gradient(to top, transparent, #3ba13e59);
+}
+.faq-title {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+.faq-list {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.faq-item {
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 0;
+    background: #fff;
+    overflow: hidden;
+}
+.faq-question {
+    cursor: pointer;
+    padding: 16px 20px;
+    font-weight: 700;
+    list-style: none;
+}
+.faq-question::marker { display: none; }
+.faq-answer {
+    padding: 0 20px 18px 20px;
+    color: #333;
+    line-height: 1.5;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.32s ease, opacity 0.32s ease;
+}
+/* When details is open, expand answer */
+details[open] .faq-answer {
+    max-height: 400px; /* large enough for most answers */
+    opacity: 1;
+}
+
+/* small caret icon on the right */
+.faq-question {
+    position: relative;
+}
+.faq-question::after {
+    content: "\25BE"; /* down-pointing small triangle */
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.25s ease;
+    color: #666;
+}
+details[open] .faq-question::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+@keyframes slideInfade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }

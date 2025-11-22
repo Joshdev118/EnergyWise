@@ -1,0 +1,184 @@
+/* Hero base (kept generic) */
+.hero .container {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+}
+
+/* Specific layout for the Global Impact hero: use the image as a background and overlay the text */
+.hero.hero-impact {
+	background-image: url('../images/globalimpact.png');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 560px;
+	display: flex;
+	align-items: center;
+}
+
+.hero.hero-impact::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, rgba(0,0,0,0.6));
+	pointer-events: none;
+}
+
+.hero.hero-impact .container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	position: relative; /* keep overlay content above the gradient */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-overlay {
+	color: #ffffff;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+	padding: 2rem;
+	max-width: 720px;
+	z-index: 2;
+	animation: slideInfade 1s ease-out forwards;
+}
+
+.hero-overlay .hero-title {
+	font-size: 50px;
+	margin: 0 0 0.75rem 0;
+}
+
+/* metrics */
+
+.metrics {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 60px 20px;
+}
+
+.metrics-content {
+	display: flex;
+	align-items: center;
+}
+
+.metrics-content .text{
+	width: 60%;
+	height: 100%;
+}
+
+.metrics .iconbox {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10%;
+	background-color: var(--greyish-color);
+	margin: 0px 20px 40px 20px;
+}
+
+.metrics .content-icon {
+	width: 50px;
+	height: 50px;
+	color: var(--dark-color);
+}
+
+.metrics .quote {
+	width: 80%;
+	font-style: italic;
+	margin-top: 30px;
+	border-left: 4px solid var(--dark-color);
+	padding-left: 15px;
+}
+
+@keyframes slideInfade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+/* Impact sections: clean cards for stats */
+.impact-content {
+	padding: 24px 0 48px;
+}
+
+.impact-sections {
+	width: 100%;
+	margin-top: 12px;
+}
+
+.impact-sections > h2 {
+	font-size: 1.5rem;
+	margin: 1.5rem 0 0.75rem;
+	color: #12303a;
+	font-weight: 600;
+}
+
+.stat-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	margin-bottom: 1.25rem;
+	align-items: stretch;
+}
+
+.stat {
+	background: #ffffff;
+	border-radius: 10px;
+	padding: 1.25rem;
+	box-shadow: 0 6px 16px rgba(19, 38, 63, 0.06);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	transition: transform .18s ease, box-shadow .18s ease;
+	min-height: 110px;
+}
+
+.stat:hover {
+	transform: translateY(-6px);
+	box-shadow: 0 14px 28px rgba(19, 38, 63, 0.12);
+}
+
+.stat-number {
+	font-size: 1.6rem;
+	font-weight: 700;
+	color: #0b6b53; /* green-ish primary */
+	margin-bottom: 0.45rem;
+}
+
+.stat-label {
+	font-size: 0.98rem;
+	color: #2b3b3f;
+	line-height: 1.35;
+}
+
+/* Make rows responsive */
+@media (max-width: 900px) {
+	.stat-row { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+	.metrics, .impact-content { margin: 30px 12px; }
+	.stat-row { grid-template-columns: 1fr; }
+	.metrics-content { flex-direction: column; }
+	.metrics-content .text { width: 100%; }
+}
+
+@media (max-width: 480px) {
+    .hero.hero-impact { height: 320px; }
+    .hero-overlay .hero-title { font-size: 28px; }
+    .stat { padding: 12px; }
+    .stat-number { font-size: 1.25rem; }
+}
+
+/* Small visual helpers */
+.quote { max-width: 720px; }
+

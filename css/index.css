@@ -1,0 +1,296 @@
+
+/* hero Section */
+.hero .container {
+    width: 100%;
+    height: 560px;
+    margin: 0px auto;
+    padding: 0; /* remove global .container horizontal padding so image touches edges */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.hero img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block; /* ensure no inline-gap / layout shift */
+    image-rendering: optimizeQuality;
+}   
+
+.hero .slider {
+    display: flex;
+    height: 100%;
+}
+
+/* animate the slider track when changing slides */
+.hero .slider {
+    transition: transform 0.5s ease;
+    will-change: transform;
+}
+
+.hero .slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hero .slide img{
+    filter: brightness(90%);
+}
+
+.hero .slide::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to bottom, transparent, rgb(0, 0, 0, 0.5));
+}
+
+.hero .slide-content {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    color: #ffffff;
+    z-index: 2;
+    font-family: "Inter", sans-serif;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    animation: slideInfade 1s ease-out forwards;
+}
+
+.hero .slide-content .title {
+    font-size: 50px;
+    margin: 0 0 10px 0;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero .slide-content p {
+    font-size: 20px;
+    margin: 0;
+    animation: fadeInUp 1s ease-out forwards;
+    animation-delay: 0.3s;
+}
+
+.hero .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(139, 139, 139, 0.582);
+    opacity: 0.7;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero svg{
+    width: 30px;
+    display: flex;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.hero .slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+    align-items: center;
+}
+
+.hero .slider-nav .nav-dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero .slider-nav .nav-dot.active {
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+}
+
+/* Main Content Styles */
+.main-content .content{
+    padding: 60px 0px;
+    text-align: center;
+}
+
+.main-content .content h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.main-content .card .animated-element {
+    width: 100%;
+    padding: 100px;
+    margin: 0 auto;
+    align-items: center;
+    display: flex;
+}
+
+/* Slide tags (small keyword badges) */
+.slide-tags { display:flex; gap:8px; margin-bottom:10px; flex-wrap:wrap; }
+.tag { display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700; font-size:13px; background: rgba(255,255,255,0.12); color:#ffffff; border: 1px solid rgba(255,255,255,0.12); }
+.tag--soft { background: rgba(255,255,255,0.08); color: #dff7ea; border-color: rgba(255,255,255,0.08); }
+.tag--accent { background: #eaf6ef; color: #0b6b3a; border-color: rgba(0,0,0,0.04); }
+.slide-content .tag { box-shadow: 0 6px 18px rgba(0,0,0,0.12); }
+.tag:hover { transform: translateY(-3px); transition: transform 180ms ease; }
+
+.main-content .card.default {
+    background: linear-gradient(to bottom, transparent, #3ba13e59);
+}
+
+.main-content .card.reverse {
+    background: linear-gradient(to top, transparent, #3ba13e59);
+}
+
+.main-content .card .iconbox {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--greyish-color);
+    margin-bottom: 20px;
+}
+
+.main-content .card svg {
+    width: 50px;
+    height: 50px;
+    color: var(--primary-color);
+}
+
+.main-content .card .text {
+    width: 50%;
+    text-align: left;
+    margin-left: 5%;
+}
+
+.main-content .card .text .btn {
+    background-color: var(--primary-color);
+    color: black;
+    padding: 10px 20px;
+    border: solid 1px black;
+    border-radius: 20px;
+    font-size: 25px;
+    cursor: pointer;
+    text-align: center;
+    display: inline-block;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.main-content .card .text .btn:hover {
+    background-color: var(--secondary-color);
+    animation: sizeUp 0.1s forwards;
+}
+
+.main-content .card .topic {
+    font-size: 50px;
+}
+
+.main-content .card .text div {
+    display: flex;
+    align-items: center;
+}
+
+.main-content .card .text div h1 {
+    color: var(--dark-color);
+}
+
+.main-content .card .text div p {
+    margin-left: 15px;
+    margin-bottom: 0;
+}
+
+.main-content img {
+    width: 30%;
+    height: 30%;
+    border-radius: 16px;
+    margin-left: 10%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateX(20px); /* Example: slide up */
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+
+/* Animation*/
+
+@keyframes slideInfade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+@keyframes sizeUp {
+    from {
+        transform: scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Tablet & mobile adjustments */
+@media (max-width: 900px) {
+    .hero .container { height: 420px; }
+    .hero .slide-content { bottom: 24px; left: 18px; }
+    .slide-panel { max-width: 86%; }
+    .slide-panel .title { font-size: 28px; }
+    .hero-extras { right: 18px; left: 18px; bottom: 16px; align-items: center; }
+    .hero-extras .hero-stats { justify-content: center; }
+    .main-content .card .animated-element { padding: 60px 20px; }
+    .main-content .card .text { width: 100%; margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+    .hero .container { height: 300px; }
+    .slide-panel .title { font-size: 20px; }
+    .slide-panel .lead { font-size: 14px; }
+    .hero-extras { position: static; margin-top: 12px; padding: 0 12px; }
+    .hero-extras .hero-ctas { justify-content: center; }
+    .hero-extras .stat { min-width: 120px; }
+    .slide-tags { gap: 6px; }
+    .main-content .card .animated-element { padding: 30px 12px; flex-direction: column; }
+    .main-content img { width: 70%; height: auto; margin-left: 0; margin-top: 12px; }
+}

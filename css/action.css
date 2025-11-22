@@ -1,0 +1,182 @@
+/* Action page styles */
+.hero-action {
+  background-image: url('../images/solarpanel-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 420px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.hero-action::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.14));
+}
+
+.hero-action .hero-overlay {
+  color: #fff;
+  z-index: 2;
+  max-width: 780px;
+  padding: 28px 0;
+  animation: slideInfade 1s ease-out forwards;
+}
+
+.hero-action h1 { font-size: 2.1rem; margin: 0 0 0.5rem; }
+.hero-action .lead { margin: 0; opacity: 0.95; }
+
+.action-layout { display: grid; grid-template-columns: 1fr 320px; gap: 32px; align-items: start; padding: 40px 0; }
+
+/* Arrange cards in a two-column grid like the reference image */
+.actions-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.action-card {
+  display: grid;
+  grid-template-columns: 64px 1fr; /* left icon square, then content */
+  gap: 16px;
+  align-items: start;
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 8px 20px rgba(8,16,18,0.06);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.action-card:hover { transform: translateY(-6px); box-shadow: 0 18px 36px rgba(8,16,18,0.10); }
+
+.action-body h3 { margin: 0 0 8px 0; font-size: 1.05rem; color: #0b4f46; }
+.action-body p { margin: 0; color: #2b3b3f; line-height: 1.45; }
+
+.action-icon {
+  width: 56px;
+  height: 56px;
+  background: #eef6f4; /* light greenish */
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #0b6b53;
+  flex: 0 0 56px;
+}
+
+.action-icon svg { width: 28px; height: 28px; }
+
+.tags { margin-bottom: 8px; display: flex; gap: 8px; }
+.tag { font-size: 0.78rem; padding: 6px 8px; border-radius: 999px; background: #eef6f4; color: #0b6b53; font-weight: 600; }
+.tag.impact:not(.high-impact) { background: #e9f7f2; }
+.tag.high-impact { background-color: var(--primary-color); }
+
+.action-aside { background: linear-gradient(180deg,#f7faf9,#eef6f4); padding: 18px; border-radius: 10px; box-shadow: 0 10px 30px rgba(11,27,30,0.05); }
+.action-aside h4 { margin: 0 0 8px; color: #0f3b35; }
+.action-aside ul { list-style: none; padding: 0; margin: 0 0 12px 0; display: flex; flex-direction: column; gap: 8px; }
+.action-aside a { color: #0b6b53; text-decoration: none; }
+
+.subscribe-form { display: flex; gap: 8px; margin-top: 8px; }
+.subscribe-form input[type=email] { flex: 1; padding: 10px; border-radius: 8px; border: 1px solid #d8e9e4; }
+.subscribe-form button { padding: 10px 12px; background: #0b6b53; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+
+.site-footer { padding: 18px 0; margin-top: 28px; background: #f5fbfa; }
+.site-footer .footer-inner { display:flex; justify-content:center; }
+
+
+/* Category nav styles (animated rectangular selector) */
+.category-nav {
+  margin: 18px 0 6px;
+  background: #e1e9e8;
+  padding: 6px;
+  border-radius: 10px;
+  display: block;
+  position: relative;
+  width: 40%;
+  margin: 50px auto 30px auto;
+}
+
+.category-list {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  position: relative;
+}
+
+.category-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  color: #234247;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  -webkit-user-select: none;
+  user-select: none;
+  font-weight: 600;
+}
+
+.high-impact {
+  background-color: var(--dark-color);
+}
+
+.category-item .cat-icon { display:inline-flex; align-items:center; color: #2c5b52; }
+.category-item .cat-label { font-size: 0.95rem; }
+
+.category-selector {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  height: calc(100% - 12px);
+  width: 120px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 6px 18px rgba(8,16,18,0.07);
+  transition: transform 320ms cubic-bezier(.2,.9,.27,1), width 220ms ease;
+  z-index: 1;
+}
+
+/* Visual cue for selected label color when under selector */
+.category-item.is-active { color: #083f36; }
+
+
+/* footer adjustments */
+.aside {
+    margin-top: 100px;
+}
+
+@keyframes slideInfade {
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+/* Responsive adjustments for Action page */
+@media (max-width: 900px) {
+  .action-layout { grid-template-columns: 1fr; padding: 24px 12px; }
+  .actions-list { grid-template-columns: 1fr; width: 100%; margin: 0; }
+  .action-aside { width: 100%; order: 2; margin-top: 16px; }
+  .action-card { grid-template-columns: 56px 1fr; }
+  .category-nav { width: 100%; margin: 20px 0; }
+  .category-list { justify-content: flex-start; overflow-x: auto; }
+}
+
+@media (max-width: 480px) {
+  .action-card { grid-template-columns: 1fr; grid-template-rows: auto; }
+  .action-icon { width: 48px; height: 48px; }
+  .actions-list { gap: 12px; }
+  .subscribe-form { flex-direction: column; }
+  .site-footer .footer-inner { flex-direction: column; }
+}

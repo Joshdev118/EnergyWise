@@ -1,0 +1,265 @@
+.page-content {background: linear-gradient(to bottom, transparent, #3ba13e59);}
+
+/* Hero base (kept generic) */
+.hero .container {
+	width: 100%;
+	max-width: 100%;
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+}
+
+/* Specific layout for the Global Impact hero: use the image as a background and overlay the text */
+.hero.hero-sdg {
+	background-image: url('../images/sdg7-hero.png');
+	background-size: cover;
+	background-position: 0 -150px;
+	background-repeat: no-repeat;
+	position: relative;
+	height: 560px;
+	display: flex;
+	align-items: center;
+}
+
+.hero.hero-sdg::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: linear-gradient(to bottom, rgba(0,0,0,0.6));
+	pointer-events: none;
+}
+
+.hero.hero-sdg .container {
+	height: 100%;
+	display: flex;
+	align-items: center;
+	position: relative; /* keep overlay content above the gradient */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hero-overlay {
+	color: #ffffff;
+	text-shadow: 0 6px 18px rgba(0,0,0,0.6);
+	padding: 2rem;
+	max-width: 720px;
+	z-index: 2;
+	animation: slideInfade 1s ease-out forwards;
+}
+
+.hero-overlay .hero-title {
+	font-size: 50px;
+	margin: 0 0 0.75rem 0;
+}
+
+.metrics {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	margin: 60px 20px;
+}
+
+.metrics-content {
+	display: flex;
+	align-items: center;
+}
+
+.metrics-content .text{
+	width: 60%;
+	height: 100%;
+}
+
+.metrics .iconbox {
+	width: 60px;
+	height: 60px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 10%;
+	background-color: var(--greyish-color);
+	margin: 0px 20px 40px 20px;
+}
+
+.metrics .content-icon {
+	width: 50px;
+	height: 50px;
+	color: var(--dark-color);
+}
+
+.metrics .quote {
+	width: 80%;
+	font-style: italic;
+	margin-top: 30px;
+	border-left: 4px solid var(--dark-color);
+	padding-left: 15px;
+}
+
+/* Targets & progress cards (SDG 7) */
+.targets {
+	margin: 48px 20px;
+}
+.targets .container {
+	max-width: 1100px;
+	margin: 0 auto;
+}
+.targets-title {
+	text-align: center;
+	font-size: 22px;
+	margin: 6px 0 20px 0;
+	color: #0b2a2b;
+	font-weight: 700;
+}
+.targets-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 22px;
+}
+.target-card {
+	background: #fff;
+	border-radius: 12px;
+	padding: 22px;
+	box-shadow: 0 6px 18px rgba(16,24,32,0.06);
+	border: 1px solid rgba(11,26,32,0.04);
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-height: 200px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.target-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.target-pill {
+	position: absolute;
+	top: 18px;
+	left: 18px;
+	background: #eaf6ef;
+	color: #1b7a3a;
+	font-weight: 700;
+	padding: 6px 8px;
+	border-radius: 8px;
+	font-size: 14px;
+}
+.target-heading {
+	margin-top: 28px;
+	margin-bottom: 8px;
+	font-size: 17px;
+	color: #0b2a2b;
+}
+.target-desc {
+	margin: 0 0 16px 0;
+	color: #566a73;
+	line-height: 1.5;
+	flex: 1 1 auto;
+}
+.progress-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #344a52;
+	font-size: 14px;
+	margin-bottom: 8px;
+}
+.progress-meta .progress-percent {
+	margin-left: auto;
+	font-weight: 700;
+	color: #155423;
+}
+.progress-bar {
+	height: 10px;
+	background: #e9eef1;
+	border-radius: 10px;
+	overflow: hidden;
+}
+.progress-fill {
+	height: 100%;
+	background: #2e8b3e;
+	border-radius: 10px 0 0 10px;
+	box-shadow: inset 0 -2px 0 rgba(0,0,0,0.06);
+}
+
+
+
+/* How-content card (supporting points) */
+.how-content {
+	margin: 32px 20px 0px;
+    padding: 50px 0;
+}
+.how-card {
+	background: #fff;
+	border-radius: 12px;
+	padding: 22px;
+	box-shadow: 0 6px 18px rgba(16,24,32,0.04);
+	border: 1px solid rgba(11,26,32,0.04);
+	max-width: 1100px;
+	margin: 0 auto;
+	display: flex;
+	gap: 18px;
+	align-items: flex-start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.how-card:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.how-icon {
+	flex: 0 0 56px;
+	width: 56px;
+	height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.how-body h3 {
+	margin: 0 0 12px 0;
+	font-size: 20px;
+	color: #0b2a2b;
+}
+.how-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+.how-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 10px 0;
+	color: #324b51;
+	line-height: 1.5;
+}
+.how-list li .check { margin-top: 2px; flex: 0 0 20px; }
+
+
+@keyframes slideInfade {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+/* SDG page responsive tweaks */
+@media (max-width: 900px) {
+		.hero.hero-sdg { height: 420px; }
+		.hero-overlay .hero-title { font-size: 36px; }
+		.targets .container { padding: 0 12px; }
+		.targets-grid { grid-template-columns: repeat(2, 1fr); }
+		.how-card { max-width: 100%; padding: 18px; }
+}
+
+@media (max-width: 480px) {
+		.hero.hero-sdg { height: 300px; }
+		.hero-overlay .hero-title { font-size: 26px; }
+		.targets-grid { grid-template-columns: 1fr; gap: 14px; }
+		.how-card { flex-direction: column; gap: 12px; }
+		.how-icon { flex: 0 0 48px; width: 48px; height: 48px; }
+}
